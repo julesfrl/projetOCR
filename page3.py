@@ -27,7 +27,7 @@ def page3():
     
     @st.cache
     def get_data():
-        df = pd.read_csv('C:/Users/jules/Desktop/Projet_OCR/min100.csv') # modifier le nom du fichier
+        df = pd.read_csv('min100.csv') # modifier le nom du fichier
         return df
     
     
@@ -74,7 +74,7 @@ def page3():
            
             X_test = X_test.reshape([-1,32,128,1])
             
-            model = load_model(os.path.join("C:/Users/jules/Desktop/Projet_OCR/","my_model_128x32.h5")) # nom du modèle à modifier
+            model = load_model("my_model_128x32.h5") # nom du modèle à modifier
             y_pred = model.predict(X_test/1.0)
             
             y_pred_class = y_pred.argmax(axis=1)
