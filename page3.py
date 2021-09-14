@@ -71,7 +71,7 @@ def page3():
  
             X_test = X_test.reshape([-1,32,128,1])
             
-            model = load_model("my_model_128x32.h5",custom_objects={'tf': tf})
+            model = load_model("my_model_128x32.h5")
             y_pred = model.predict(X_test/1.0)
             
             y_pred_class = y_pred.argmax(axis=1)
