@@ -69,12 +69,10 @@ def page3():
             X_test=[]
             X_test.append(my_image)
             X_test = np.array(X_test)
-            
-
-           
+ 
             X_test = X_test.reshape([-1,32,128,1])
             
-            model = load_model("my_model_128x32.h5") # nom du modèle à modifier
+            model = keras.models.load_model("my_model_128x32.h5",custom_objects={'tf': tf})
             y_pred = model.predict(X_test/1.0)
             
             y_pred_class = y_pred.argmax(axis=1)
