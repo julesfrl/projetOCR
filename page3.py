@@ -8,6 +8,8 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from asrtoolkit import cer
 from streamlit_drawable_canvas import st_canvas
+import keras.backend.tensorflow_backend as tb
+tb._SYMBOLIC_SCOPE.value = True
 
 def page3():
     st.title("Démonstration")
