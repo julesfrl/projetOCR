@@ -70,7 +70,7 @@ def page3():
  
             X_test = X_test.reshape([-1,32,128,1])
             
-            model = keras.models.load_model("my_model_128x32.h5",custom_objects={'tf': tf})
+            model = keras.models.load_model("ocr_model_test.h5",custom_objects={'tf': tf})
             y_pred = model.predict(X_test/1.0)
             
             y_pred_class = y_pred.argmax(axis=1)
@@ -100,7 +100,7 @@ def page3():
             X_test = np.array(X_test)
 
             
-            model = load_model(os.path.join("C:/Users/jules/Desktop/Projet_OCR/","my_model_yolo_2.h5")) # nom du modèle à modifier
+            model = tf.keras.models.load_model('htr_model_cer.h5', custom_objects={'tf': tf})
             
             def loss(labels, logits):
                 return tf.reduce_mean(
