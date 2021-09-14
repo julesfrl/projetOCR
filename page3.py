@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from keras.utils import np_utils
 from PIL import Image
 import tensorflow as tf
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 from asrtoolkit import cer
 from streamlit_drawable_canvas import st_canvas
 
