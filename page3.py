@@ -5,7 +5,7 @@ import pandas as pd
 from tensorflow import keras
 import matplotlib.pyplot as plt
 from keras.utils import np_utils
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import os
 from PIL import Image
 import tensorflow as tf
