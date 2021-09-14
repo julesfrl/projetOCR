@@ -5,12 +5,9 @@ import pandas as pd
 from tensorflow import keras
 import matplotlib.pyplot as plt
 from keras.utils import np_utils
-from tensorflow.keras.models import load_model
-import os
 from PIL import Image
 import tensorflow as tf
-from streamlit_drawable_canvas import st_canvas
-#from asrtoolkit import cer
+from asrtoolkit import cer
 
 def page3():
     st.title("Démonstration")
