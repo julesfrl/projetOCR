@@ -13,7 +13,7 @@ from streamlit_drawable_canvas import st_canvas
 
 def page3():
     st.title("Démonstration")
-    st.title("Test de l'outil")
+
     canvas_result = st_canvas(
         stroke_width = 25,
         stroke_color = "#000",
@@ -57,8 +57,8 @@ def page3():
             
             my_initial_image = canvas_result.image_data
             #st.write(my_initial_image.shape)
-            img =cv2.resize(my_initial_image.astype(np.uint8),(128,32))
-            img_rescalling = (cv2.resize(img, dsize=(128,32),interpolation=cv2.INTER_NEAREST))
+            img =cv2.resize(my_initial_image.astype(np.uint8),(65,65)) #mettre astype(np.uint8),(128,32))
+            img_rescalling = (cv2.resize(img, dsize=(65,65),interpolation=cv2.INTER_NEAREST)) #mettre dsize=(128,32)
             #st.write(img_rescalling.shape)
             my_image=cv2.cvtColor(img_rescalling,cv2.COLOR_BGR2GRAY)
             
@@ -69,9 +69,9 @@ def page3():
             X_test.append(my_image)
             X_test = np.array(X_test)
  
-            X_test = X_test.reshape([-1,32,128,1])
+            X_test = X_test.reshape([-1,65,65,1]) #mettre reshape([-1,32,128,1])
             
-            model = tf.keras.models.load_model("my_model_128x32.h5")
+            model = tf.keras.models.load_model("ocr_model_test.h5")
             y_pred = model.predict(X_test/1.0)
             
             y_pred_class = y_pred.argmax(axis=1)
