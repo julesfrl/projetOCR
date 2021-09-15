@@ -18,8 +18,8 @@ def page3():
         stroke_width = 25,
         stroke_color = "#000",
         background_color = "#fff",
-        height = 280,
-        width = 1120,
+        height = 320,
+        width = 1280,
         drawing_mode = "freedraw",
         key = "canvas",
         )
