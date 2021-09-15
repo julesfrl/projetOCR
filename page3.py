@@ -100,7 +100,7 @@ def page3():
             X_test = np.array(X_test)
 
             
-            model = tf.keras.models.load_model('htr_model_cer.h5', custom_objects={'tf': tf})
+            model = tf.keras.models.load_model('ocr_model.h5', custom_objects={'tf': tf})
             
             def loss(labels, logits):
                 return tf.reduce_mean(
