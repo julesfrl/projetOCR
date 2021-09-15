@@ -26,7 +26,7 @@ def page3():
     
     @st.cache
     def get_data():
-        df = pd.read_csv('min100.csv') # modifier le nom du fichier
+        df = pd.read_csv('top100.csv') # mettre min100.csv
         return df
     
     
@@ -71,7 +71,7 @@ def page3():
  
             X_test = X_test.reshape([-1,65,65,1]) #mettre reshape([-1,32,128,1])
             
-            model = tf.keras.models.load_model("ocr_model_test.h5")
+            model = tf.keras.models.load_model("ocr_model_test.h5") # mettre le 1er modèle
             y_pred = model.predict(X_test/1.0)
             
             y_pred_class = y_pred.argmax(axis=1)
