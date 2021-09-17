@@ -166,8 +166,8 @@ def page3():
 
 
             X_test = tf.cast(X_test, dtype = tf.float32)
-            l = greedy_decoder(model(np.expand_dims(X_test, -1)))
-            
+            #l = greedy_decoder(model(np.expand_dims(X_test, -1)))
+            l = greedy_decoder(model(X_test))
             st.write("Et voici les résultats de votre modèle :")
 
             st.write('**Prediction**')
