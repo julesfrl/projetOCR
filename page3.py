@@ -15,7 +15,7 @@ def page3():
     st.title("Démonstration")
 
     canvas_result = st_canvas(
-        stroke_width = 25,
+        stroke_width = 15,
         stroke_color = "#000",
         background_color = "#fff",
         height = 320,
