@@ -88,8 +88,8 @@ def page3():
         else:
             my_initial_image = canvas_result.image_data
             #st.write(my_initial_image.shape)
-            img =cv2.resize(my_initial_image.astype(np.uint8),(132,28))
-            img_rescalling = (cv2.resize(img, dsize=(132,28),interpolation=cv2.INTER_NEAREST))
+            img =cv2.resize(my_initial_image.astype(np.uint8),(128,32))
+            img_rescalling = (cv2.resize(img, dsize=(128,32),interpolation=cv2.INTER_NEAREST))
             #st.write(img_rescalling.shape)
             my_image=cv2.cvtColor(img_rescalling,cv2.COLOR_BGR2GRAY)
             
