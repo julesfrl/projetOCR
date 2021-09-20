@@ -6,13 +6,15 @@ from page3 import page3
 st.title("Projet OCR - OCT 20 DS")
 st.subheader(" ")
 page_selectionnee = st.sidebar.selectbox(
-    label="Page", options=["Introduction","Galerie","Démonstration"]
+    label="Page", options=["Introduction","Galerie","Démonstration", "Amélioration"]
 )
 
 if page_selectionnee == "Introduction":
     page1()
 elif page_selectionnee == "Galerie":
     page2()
-else:
+elif page_selectionnee == "Démonstration":
     page3()
+else:
+    page4()
  
