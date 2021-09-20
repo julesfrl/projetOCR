@@ -15,7 +15,7 @@ def page4():
     st.title("Amélioration")
 
     canvas_result = st_canvas(
-        stroke_width = 25,
+        stroke_width = 15,
         stroke_color = "#000",
         background_color = "#fff",
         height = 250,
@@ -71,13 +71,13 @@ def page4():
             my_initial_image = canvas_result.image_data
             #st.write(my_initial_image.shape)
             img =cv2.resize(my_initial_image.astype(np.uint8),(300,50))
-            img_rescalling = (cv2.resize(img, dsize=(128,32),interpolation=cv2.INTER_NEAREST))
+            img_rescalling = (cv2.resize(img, dsize=(300,50),interpolation=cv2.INTER_NEAREST))
             #st.write(img_rescalling.shape)
             my_image=cv2.cvtColor(img_rescalling,cv2.COLOR_BGR2GRAY)
             
             #st.write(my_image.shape)
             st.write("Vous avez écrit:")
-            st.image(my_image, width=400)
+            st.image(my_image, width=300)
             X_test=[]
             X_test.append(my_image)
             X_test = np.array(X_test)
