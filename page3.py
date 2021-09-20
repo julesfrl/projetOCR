@@ -174,6 +174,12 @@ def page3():
             st.write("model(X_test_new)", X_test_prediction)
             X_test_pred_transp = tf.transpose(X_test_prediction, (1, 0, 2))
             st.write("tf.transpose(model(X_test_new), (1, 0, 2))", X_test_pred_transp)
+            X_test_seq = [X_test_prediction.shape[1]]*X_test_prediction.shape[0]
+            st.write("[X_test_prediction.shape[1]]*X_test_prediction.shape[0]", X_test_seq)
+            
+            output_greed = tf.nn.ctc_greedy_decoder(X_test_pred_transp, X_test_seq)
+            st.write("tf.nn.ctc_greedy_decoder(X_test_pred_transp, X_test_seq)",output_greed)
+            
             #l = greedy_decoder(model(np.expand_dims(X_test, -1)))
             l = greedy_decoder(X_test_new)
             st.write("Et voici les résultats de votre modèle :")
