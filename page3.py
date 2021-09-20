@@ -185,7 +185,8 @@ def page3():
             st.write("text = decode_codes(codes, charList)", text)
             text = tf.sparse.to_dense(text).numpy().astype(str)
             st.write("text = tf.sparse.to_dense(text).numpy().astype(str)", text)
-       
+            predi = list(map(lambda x: ''.join(x), text))
+            st.write(list(map(lambda x: ''.join(x), text)), predi)
             #l = greedy_decoder(model(np.expand_dims(X_test, -1)))
             l = greedy_decoder(X_test_new)
             st.write("Et voici les résultats de votre modèle :")
