@@ -170,7 +170,7 @@ def page3():
             st.write(np.expand_dims(X_test, -1))
             st.write(np.expand_dims(X_test, 0))
             #l = greedy_decoder(model(np.expand_dims(X_test, -1)))
-            #l = greedy_decoder(model(np.expand_dims(X_test, 0)))
+            l = greedy_decoder(model(np.expand_dims(X_test, 0)))
             st.write("Et voici les résultats de votre modèle :")
 
             st.write('**Prediction**')
