@@ -11,7 +11,7 @@ from asrtoolkit import cer
 from streamlit_drawable_canvas import st_canvas
 
 
-def page3():
+def page4():
     st.title("Amélioration")
 
     canvas_result = st_canvas(
