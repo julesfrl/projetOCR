@@ -167,36 +167,36 @@ def page3():
 
             X_test = tf.cast(X_test, dtype = tf.float32)
             
-            st.write("X_test[:1]", X_test[:1])
-            st.write("np.expand_dims(X_test[:1], -1)",np.expand_dims(X_test[:1], -1).shape,np.expand_dims(X_test[:1], -1))
+            #st.write("X_test[:1]", X_test[:1])
+            #st.write("np.expand_dims(X_test[:1], -1)",np.expand_dims(X_test[:1], -1).shape,np.expand_dims(X_test[:1], -1))
             X_test_new = np.expand_dims(X_test[:1], -1)
             
             X_test_prediction = model(X_test_new)
-            st.write("model(X_test_new)", X_test_prediction)
+            #st.write("model(X_test_new)", X_test_prediction)
             
             X_test_pred_transp = tf.transpose(X_test_prediction, (1, 0, 2))
-            st.write("tf.transpose(model(X_test_new), (1, 0, 2))", X_test_pred_transp)
+            #st.write("tf.transpose(model(X_test_new), (1, 0, 2))", X_test_pred_transp)
             
             X_test_seq = [X_test_prediction.shape[1]]*X_test_prediction.shape[0]
-            st.write("[X_test_prediction.shape[1]]*X_test_prediction.shape[0]", X_test_seq)
+            #st.write("[X_test_prediction.shape[1]]*X_test_prediction.shape[0]", X_test_seq)
             
             predicted_codes, _  = tf.nn.ctc_greedy_decoder(X_test_pred_transp, X_test_seq)
-            st.write("predicted_codes[0]", predicted_codes[0])
+            #st.write("predicted_codes[0]", predicted_codes[0])
             
             predicted_codes_str = tf.sparse.to_dense(predicted_codes[0]).numpy().astype(str)
-            st.write("predicted_codes_str", predicted_codes_str)
+            #st.write("predicted_codes_str", predicted_codes_str)
             
             codes = tf.cast(predicted_codes[0], tf.int32)
-            st.write("codes = tf.cast(predicted_codes[0], tf.int32)", codes)
+            #st.write("codes = tf.cast(predicted_codes[0], tf.int32)", codes)
             
             text = decode_codes(codes, charList)
-            st.write("text = decode_codes(codes, charList)", text)
+            #st.write("text = decode_codes(codes, charList)", text)
            
             text = tf.sparse.to_dense(text).numpy().astype(str)
-            st.write("text = tf.sparse.to_dense(text).numpy().astype(str)", text)
+            #st.write("text = tf.sparse.to_dense(text).numpy().astype(str)", text)
             
             predi = list(map(lambda x: ''.join(x), text))
-            st.write("predi = list(map(lambda x: ''.join(x), text))", predi)
+            #st.write("predi = list(map(lambda x: ''.join(x), text))", predi)
             
             st.write("Et voici les résultats de votre modèle :")
             
