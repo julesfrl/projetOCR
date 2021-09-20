@@ -181,7 +181,7 @@ def page3():
             st.write("[X_test_prediction.shape[1]]*X_test_prediction.shape[0]", X_test_seq)
             
             predicted_codes, _  = tf.nn.ctc_greedy_decoder(X_test_pred_transp, X_test_seq)
-            st.write("tf.nn.ctc_greedy_decoder(X_test_pred_transp, X_test_seq)",predicted_codes)
+            st.write("predicted_codes[0]", predicted_codes[0])
             
             codes = tf.cast(predicted_codes[0], tf.int32)
             st.write("codes = tf.cast(predicted_codes[0], tf.int32)", codes)
