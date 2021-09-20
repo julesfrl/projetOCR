@@ -168,7 +168,7 @@ def page3():
             X_test = tf.cast(X_test, dtype = tf.float32)
             X_test_new = np.expand_dims(X_test[:1], -1)
             st.write("X_test[:1]", X_test[:1])
-            st.write("np.expand_dims(X_test[:1], -1)",type(np.expand_dims(X_test[:1], -1)),np.expand_dims(X_test[:1], -1))
+            st.write("np.expand_dims(X_test[:1], -1)",np.expand_dims(X_test[:1], -1).shape,np.expand_dims(X_test[:1], -1))
             #l = greedy_decoder(model(np.expand_dims(X_test, -1)))
             l = greedy_decoder(X_test_new)
             st.write("Et voici les résultats de votre modèle :")
