@@ -183,6 +183,9 @@ def page3():
             predicted_codes, _  = tf.nn.ctc_greedy_decoder(X_test_pred_transp, X_test_seq)
             st.write("predicted_codes[0]", predicted_codes[0])
             
+            predicted_codes_str = tf.sparse.to_dense(predicted_codes[0]).numpy().astype(str)
+            st.write("predicted_codes_str", predicted_codes_str)
+            
             codes = tf.cast(predicted_codes[0], tf.int32)
             st.write("codes = tf.cast(predicted_codes[0], tf.int32)", codes)
             
