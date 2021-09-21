@@ -38,8 +38,8 @@ def page4():
         if choix_modele == "Version 1":
             my_initial_image = canvas_result.image_data
             #st.write(my_initial_image.shape)
-            img =cv2.resize(my_initial_image.astype(np.uint8),(300,50))
-            img_rescalling = (cv2.resize(img, dsize=(300,50),interpolation=cv2.INTER_NEAREST))
+            img =cv2.resize(my_initial_image.astype(np.uint8),(128,32))
+            img_rescalling = (cv2.resize(img, dsize=(128,32),interpolation=cv2.INTER_NEAREST))
             #st.write(img_rescalling.shape)
             my_image=cv2.cvtColor(img_rescalling,cv2.COLOR_BGR2GRAY)
             
@@ -53,34 +53,12 @@ def page4():
             
             model = tf.keras.models.load_model('model_ocr.h5', custom_objects={'tf': tf})
             
-            def loss(labels, logits):
-                return tf.reduce_mean(
-                        tf.nn.ctc_loss(
-                            labels = labels,
-                            logits = logits,
-                            logit_length = [logits.shape[1]]*logits.shape[0],
-                            label_length = None,
-                            logits_time_major = False,
-                            blank_index=-1
-                        )
-                    )
+           
 
             import string
             charList = list(string.ascii_letters)+[' ']
 
-            def encode_labels(labels, charList):
-                # Hash Table
-                table = tf.lookup.StaticHashTable(
-                    tf.lookup.KeyValueTensorInitializer(
-                        charList,
-                        np.arange(len(charList)),
-                        value_dtype=tf.int32
-                    ),
-                    0,
-                    name='char2id'
-                )
-                return table.lookup(
-                tf.compat.v1.string_split(labels, delimiter=''))   
+
 
 
             def decode_codes(codes, charList):
@@ -96,7 +74,7 @@ def page4():
                 return table.lookup(codes)
 
             def greedy_decoder(logits):
-            # ctc beam search decoder
+                # ctc beam search decoder
                 predicted_codes, _ = tf.nn.ctc_greedy_decoder(
                     # shape of tensor [max_time x batch_size x  num_classes] 
                     tf.transpose(logits, (1, 0, 2)),
@@ -171,34 +149,10 @@ def page4():
             
             model = tf.keras.models.load_model('model_ocr_v2.h5', custom_objects={'tf': tf})
             
-            def loss(labels, logits):
-                return tf.reduce_mean(
-                        tf.nn.ctc_loss(
-                            labels = labels,
-                            logits = logits,
-                            logit_length = [logits.shape[1]]*logits.shape[0],
-                            label_length = None,
-                            logits_time_major = False,
-                            blank_index=-1
-                        )
-                    )
 
             import string
             charList = list(string.ascii_letters)+[' ']
 
-            def encode_labels(labels, charList):
-                # Hash Table
-                table = tf.lookup.StaticHashTable(
-                    tf.lookup.KeyValueTensorInitializer(
-                        charList,
-                        np.arange(len(charList)),
-                        value_dtype=tf.int32
-                    ),
-                    0,
-                    name='char2id'
-                )
-                return table.lookup(
-                tf.compat.v1.string_split(labels, delimiter=''))   
 
 
             def decode_codes(codes, charList):
