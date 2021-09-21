@@ -103,35 +103,10 @@ def page3():
             
             model = tf.keras.models.load_model('model_ocr.h5', custom_objects={'tf': tf})
             
-            def loss(labels, logits):
-                return tf.reduce_mean(
-                        tf.nn.ctc_loss(
-                            labels = labels,
-                            logits = logits,
-                            logit_length = [logits.shape[1]]*logits.shape[0],
-                            label_length = None,
-                            logits_time_major = False,
-                            blank_index=-1
-                        )
-                    )
+         
 
             import string
             charList = list(string.ascii_letters)+[' ']
-
-            def encode_labels(labels, charList):
-                # Hash Table
-                table = tf.lookup.StaticHashTable(
-                    tf.lookup.KeyValueTensorInitializer(
-                        charList,
-                        np.arange(len(charList)),
-                        value_dtype=tf.int32
-                    ),
-                    0,
-                    name='char2id'
-                )
-                return table.lookup(
-                tf.compat.v1.string_split(labels, delimiter=''))   
-
 
             def decode_codes(codes, charList):
                 table = tf.lookup.StaticHashTable(
